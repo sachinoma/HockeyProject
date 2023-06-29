@@ -19,6 +19,7 @@ public class PlayerConfigurationManager : MonoBehaviour
         if(Instance != null)
         {
             Debug.Log("trying to creat another singleton!");
+            Destroy(this.gameObject);
         }
         else
         {
@@ -43,8 +44,18 @@ public class PlayerConfigurationManager : MonoBehaviour
         playerConfigs[index].IsReady = true;
         if(playerConfigs.Count == MaxPLayers && playerConfigs.All(p => p.IsReady == true))
         {
+            ////PlayerタグをつけたGameObjectを配列で取得しリストへ変換
+            //List<GameObject> gameObjects = GameObject.FindGameObjectsWithTag("Player").ToList();
+            ////取得したGameObjectを削除
+            //gameObjects.ForEach(gameObj => Destroy(gameObj));
+
             SceneManager.LoadScene("MainGame");
         }
+    }
+
+    public void ListEmpty() 
+    {
+        playerConfigs.RemoveAll(p => p != null);
     }
 
     public void HandlePlayerJoin(PlayerInput pi)

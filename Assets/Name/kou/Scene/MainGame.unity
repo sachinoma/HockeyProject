@@ -986,7 +986,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290633472}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb3e70c453f2394982bec4f727ee9f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 48d34011f9199da44b1108a811ee226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isLeft: 0
@@ -1332,31 +1332,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1866362850}
   - component: {fileID: 1866362851}
-  - component: {fileID: 1866362849}
   - component: {fileID: 1866362852}
+  - component: {fileID: 1866362853}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1866362849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866362848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e03a4a2b1d0b2a040bbe3cc042d17c7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnPos:
-  - {fileID: 584354735}
-  hockey: {fileID: 1072512909748566682, guid: ea2ddf2f8eade8b49a8addf00e56c657, type: 3}
-  score: 0000000000000000
+  m_IsActive: 1
 --- !u!4 &1866362850
 Transform:
   m_ObjectHideFlags: 0
@@ -1379,7 +1363,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866362848}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
   m_Name: 
@@ -1436,7 +1420,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1866362848}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57dce658ca042e84abce8f11a3d6fafb, type: 3}
   m_Name: 
@@ -1444,6 +1428,22 @@ MonoBehaviour:
   fighters:
   - {fileID: 4509672135685401677, guid: c0fbe4e3ce1491a4ea78d0ffc6689a0a, type: 3}
   - {fileID: 4509672135685401677, guid: c0fbe4e3ce1491a4ea78d0ffc6689a0a, type: 3}
+--- !u!114 &1866362853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866362848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bdaf7cd18e0a1c4d98dc7b064358e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPos:
+  - {fileID: 584354735}
+  hockey: {fileID: 1072512909748566682, guid: ea2ddf2f8eade8b49a8addf00e56c657, type: 3}
+  score: 0000000000000000
 --- !u!1 &1933096345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,7 +1613,7 @@ GameObject:
   - component: {fileID: 2012432701}
   - component: {fileID: 2012432700}
   - component: {fileID: 2012432699}
-  - component: {fileID: 2012432702}
+  - component: {fileID: 2012432703}
   m_Layer: 0
   m_Name: GoalLeft
   m_TagString: Untagged
@@ -1707,7 +1707,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012432697}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &2012432702
+--- !u!114 &2012432703
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2012432697}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddb3e70c453f2394982bec4f727ee9f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 48d34011f9199da44b1108a811ee226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isLeft: 1

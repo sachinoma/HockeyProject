@@ -4894,7 +4894,7 @@ GameObject:
   - component: {fileID: 6394620876563370128}
   - component: {fileID: 2335949767099216425}
   - component: {fileID: 2884667990787161644}
-  - component: {fileID: 2389032566015647027}
+  - component: {fileID: 4045740030576839270}
   - component: {fileID: 9026839922027715884}
   - component: {fileID: 6015947245463760867}
   - component: {fileID: 3244275897101238562}
@@ -4954,7 +4954,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2389032566015647027}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -4970,7 +4970,7 @@ MonoBehaviour:
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2389032566015647027}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
         m_MethodName: OnAttack
         m_Mode: 0
@@ -5002,7 +5002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 8911564255556392028}
---- !u!114 &2389032566015647027
+--- !u!114 &4045740030576839270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5011,7 +5011,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8892636604428734140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ecb343bc4e269ae4aa418cb274a55a0a, type: 3}
+  m_Script: {fileID: 11500000, guid: c01e8ba52840bc94381c75eb80e96e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6015947245463760867}
@@ -5019,7 +5019,7 @@ MonoBehaviour:
   jumpHeight: 1
   gravityValue: -9.81
   forceMagnitude: 5
-  attackTrigger: {fileID: 0}
+  attackTrigger: {fileID: 3504687304614831906}
 --- !u!143 &9026839922027715884
 CharacterController:
   m_ObjectHideFlags: 0

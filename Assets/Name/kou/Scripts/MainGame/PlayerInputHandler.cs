@@ -33,13 +33,27 @@ public class PlayerInputHandler : MonoBehaviour
         {
             OnMove(context);
         }
+        if (context.action.name == controls.Player.Attack.name)
+        {
+            OnAttack(context);
+        }
     }
 
     public void OnMove(CallbackContext context)
     {
         if(mover != null)
         {
-            mover.SetInputVector(context.ReadValue<Vector2>());
+            mover.OnMove(context);
+            //mover.SetInputVector(context.ReadValue<Vector2>());
+        }
+    }
+
+    public void OnAttack(CallbackContext context)
+    {
+        if (mover != null)
+        {
+            mover.OnAttack(context);
+            //mover.SetInputVector(context.ReadValue<Vector2>());
         }
     }
 }

@@ -9,7 +9,7 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private Animator animator;
     private CharacterController controller;
-    private Vector3 moveDirection;
+    
     private bool groundedPlayer;
     [SerializeField]
     private float playerSpeed = 2.0f;
@@ -18,6 +18,7 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private float gravityValue = -9.81f;
 
+    private Vector3 moveDirection = Vector2.zero;
     private Vector2 inputVector = Vector2.zero;
     private bool attacked = false;
 
@@ -28,11 +29,13 @@ public class Mover : MonoBehaviour
     private GameObject attackTrigger;
 
 
-
-
-    private void Start()
+    private void Awake()
     {
         controller = gameObject.GetComponent<CharacterController>();
+    }
+
+    private void Start()
+    {     
         attackTrigger = transform.Find("AttackTrigger").gameObject;
         attackTrigger.SetActive(false);
     }
