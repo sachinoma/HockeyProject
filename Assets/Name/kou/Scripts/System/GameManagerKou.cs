@@ -59,6 +59,7 @@ public class GameManagerKou : MonoBehaviour
         if (score[0] >= 1 || score[1] >= 1)
         {
             DestroyPlayer();
+            DeActivePlayerConfiguration();
             Load();
         }
 
@@ -77,4 +78,11 @@ public class GameManagerKou : MonoBehaviour
         gameObjects.ForEach(gameObj => Destroy(gameObj));
     }
 
+    public void DeActivePlayerConfiguration()
+    {
+        //PlayerConfigurationタグをつけたGameObjectを配列で取得しリストへ変換
+        List<GameObject> gameObjects = GameObject.FindGameObjectsWithTag("PlayerConfiguration").ToList();
+
+        gameObjects.ForEach(gameObj => gameObj.GetComponent<PlayerInput>().DeactivateInput());
+    }
 }
