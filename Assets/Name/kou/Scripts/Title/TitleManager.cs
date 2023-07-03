@@ -13,15 +13,17 @@ public class TitleManager : MonoBehaviour
     {
         if(playerConfigurationManager != null)
         {
+            //playerConfigurationManagerを取得
             playerConfigurationManager = GameObject.Find("PlayerConfigurationManager").GetComponent<PlayerConfigurationManager>();
         }       
     }
 
+    //Buttonのイベントで呼ぶ
     public void ToPlayerSetup()
     {
         SceneManager.LoadScene("PlayerSetup");
     }
-
+    //Buttonのイベントで呼ぶ
     public void ToCredit()
     {
         //SceneManager.LoadScene("Credit");

@@ -1443,6 +1443,7 @@ MonoBehaviour:
   spawnPos:
   - {fileID: 584354735}
   hockey: {fileID: 1072512909748566682, guid: ea2ddf2f8eade8b49a8addf00e56c657, type: 3}
+  resetTime: 1.5
   score: 0000000000000000
 --- !u!1 &1933096345
 GameObject:

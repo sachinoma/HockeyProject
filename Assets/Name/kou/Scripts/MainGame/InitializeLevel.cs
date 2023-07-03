@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class InitializeLevel : MonoBehaviour
 {
+    //プレイヤーのスポーン地点
     [SerializeField]
     private Transform[] playerSpawns;
+    //プレイヤーPrefab
     [SerializeField]
     private GameObject playerPrefab;
 
     [SerializeField]
     private PlayerConfiguration[] playerConfigs;
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        //playerConfigsを基にプレイヤーを配置
         playerConfigs = PlayerConfigurationManager.Instance.GetPlayerConfigs().ToArray();
         for(int i = 0; i < playerConfigs.Length; i++)
         {

@@ -25,24 +25,18 @@ public class ResultManager : MonoBehaviour
     void Start()
     {
         playerConfigurationManager = GameObject.Find("PlayerConfigurationManager").GetComponent<PlayerConfigurationManager>();
-        //playerConfigurationManager.GetComponent<PlayerInputManager>().enabled = false;
         parent = playerConfigurationManager.transform.gameObject;
-
         foreach(MultiplayerEventSystem eventSystem in FindObjectsOfType<MultiplayerEventSystem>()) { eventSystem.SetSelectedGameObject(menuItem); }
     }
 
-    private void Update()
-    {
-
-    }
-
+    //再戦処理
     public void OneMore()
     {
-        GetChildren(parent);
-        //playerConfigurationManager.GetComponent<PlayerInputManager>().enabled = true;
+        ActivePlayerConfiguration(parent);
         SceneManager.LoadScene("MainGame");
     }
 
+    //Titleに戻る
     public void ToTitle()
     {
         DestroyPlayerConfiguration();
@@ -51,46 +45,37 @@ public class ResultManager : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
-
-    public void ActivePlayerConfiguration()
+    //PlayerConfigurationをアクティブにする
+    void ActivePlayerConfiguration(GameObject obj)
     {
-       
-        playerInputs = parent.transform.GetComponentsInChildren<PlayerInput>();
-        foreach(var item in playerInputs)
+        int maxPlayer = playerConfigurationManager.GetMaxPlayer();
+        GameObject[] child = new GameObject[maxPlayer];
+
+        //子オブジェクトはPlayerConfigurationしかないので、child順検索でする
+        for(int i = 0; i < maxPlayer; ++i)
         {
-            item.enabled = true;
-
-            //タグが"Enemy"である子オブジェクトを削除する
-            if (item.tag == "Enemy")
-            {
-                Destroy(item.gameObject);
-            }
+            child[i] = obj.transform.GetChild(i).gameObject;
+            child[i].GetComponent<PlayerInput>().ActivateInput();
         }
-    }
 
-    void GetChildren(GameObject obj)
-    {
-        GameObject child0 = obj.transform.GetChild(0).gameObject;
-        child0.GetComponent<PlayerInput>().ActivateInput();
-
-        GameObject child1 = obj.transform.GetChild(1).gameObject;
-        child1.GetComponent<PlayerInput>().ActivateInput();
-
-        //Transform children = obj.GetComponentInChildren<Transform>();
-        ////子要素がいなければ終了
-        //if (children.childCount == 0)
-        //{
-        //    return;
-        //}
-        //foreach (Transform ob in children)
-        //{
-        //    if(ob.gameObject.tag ==("PlayerConfiguration"))
-        //    {
-        //        Debug.Log("FindTag");
-        //        ob.gameObject.SetActive(false);
-        //    }
-        //    GetChildren(ob.gameObject);
-        //}
+        //元々は順番じゃなくchild検索+スクリプト検索でしたいけど上手くいかない。
+        /*
+        Transform children = obj.GetComponentInChildren<Transform>();
+        //子要素がいなければ終了
+        if(children.childCount == 0)
+        {
+            return;
+        }
+        foreach(Transform ob in children)
+        {
+            if(ob.gameObject.tag == ("PlayerConfiguration"))
+            {
+                Debug.Log("FindTag");
+                ob.gameObject.SetActive(false);
+            }
+            GetChildren(ob.gameObject);
+        }
+        */
     }
 
     public void DestroyPlayerConfiguration()
@@ -102,12 +87,13 @@ public class ResultManager : MonoBehaviour
     }
     public void DestroyPlayerConfigurationManager()
     {
-        //PlayerConfigurationタグをつけたGameObjectを配列で取得しリストへ変換
+        //PlayerConfigurationManagerタグをつけたGameObjectを配列で取得しリストへ変換
         GameObject gameObject = GameObject.Find("PlayerConfigurationManager");
         //取得したGameObjectを削除
         Destroy(gameObject);
     }
 
+    //playerConfigsを格納しているリストを空にする
     public void ListEmpty()
     {
         playerConfigurationManager.ListEmpty();

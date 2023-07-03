@@ -20,9 +20,11 @@ public class GameManagerKou : MonoBehaviour
     private GameObject hockey;
 
     [SerializeField]
+    float resetTime;
+
+    [SerializeField]
     private int[] score;
 
-    // Start is called before the first frame update
     void Start()
     {
         playerInputManager = gameObject.GetComponent<PlayerInputManager>();
@@ -30,11 +32,7 @@ public class GameManagerKou : MonoBehaviour
         SpawnHockey();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //スコア加算
     public void ScorePlus(bool isLeft,int num)
     {
         if (isLeft) 
@@ -44,16 +42,28 @@ public class GameManagerKou : MonoBehaviour
         else
         {
             score[1] += num;
-        }
-        Invoke("SpawnHockey", 1.5f);
+        }       
         Judge();
     }
 
+    //Goalからこのメソッドを呼ぶ
+    public void TriggerSpawnHockey()
+    {
+        SpawnHockey(resetTime);
+    }
+
+    //ホッケー生成の遅延バージョン
+    public void SpawnHockey(float time)
+    {
+        Invoke("SpawnHockey", time);
+    }
+
+    //ホッケー生成
     public void SpawnHockey()
     {
         Instantiate(hockey, spawnPos[0].position, Quaternion.identity);
     }
-
+    //デバッグ用の為にスコアが1以上の場合はシーン遷移
     private void Judge()
     {
         if (score[0] >= 1 || score[1] >= 1)
@@ -62,9 +72,9 @@ public class GameManagerKou : MonoBehaviour
             DeActivePlayerConfiguration();
             Load();
         }
-
     }
 
+    //リザルトに移行
     private void Load()
     {
         SceneManager.LoadScene("Result");
@@ -78,11 +88,12 @@ public class GameManagerKou : MonoBehaviour
         gameObjects.ForEach(gameObj => Destroy(gameObj));
     }
 
+    //PlayerConfigurationをデアクティブにする
     public void DeActivePlayerConfiguration()
     {
         //PlayerConfigurationタグをつけたGameObjectを配列で取得しリストへ変換
         List<GameObject> gameObjects = GameObject.FindGameObjectsWithTag("PlayerConfiguration").ToList();
-
+        //公式のDeactivateInput()を使う
         gameObjects.ForEach(gameObj => gameObj.GetComponent<PlayerInput>().DeactivateInput());
     }
 }

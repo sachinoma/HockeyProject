@@ -20,6 +20,7 @@ public class PlayerInputHandler : MonoBehaviour
         controls = new PlayerController();
     }
 
+    //PlayerConfigs‚©‚ç–á‚Á‚½İ’è‚Åplayer‚ğİ’è‚·‚é
     public void InitializePlayer(PlayerConfiguration pc)
     {
         playerConfig = pc;
@@ -27,6 +28,7 @@ public class PlayerInputHandler : MonoBehaviour
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
     }
 
+    //InputƒCƒxƒ“ƒg
     private void Input_onActionTriggered(CallbackContext context)
     {
         if(context.action.name == controls.Player.Movement.name)
@@ -39,21 +41,20 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    //ˆÚ“®’†
     public void OnMove(CallbackContext context)
     {
         if(mover != null)
         {
             mover.OnMove(context);
-            //mover.SetInputVector(context.ReadValue<Vector2>());
         }
     }
-
+    //Attack’†
     public void OnAttack(CallbackContext context)
     {
         if (mover != null)
         {
             mover.OnAttack(context);
-            //mover.SetInputVector(context.ReadValue<Vector2>());
         }
     }
 }

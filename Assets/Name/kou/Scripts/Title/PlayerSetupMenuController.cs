@@ -27,7 +27,6 @@ public class PlayerSetupMenuController : MonoBehaviour
         ignoreInputTime = Time.time + ignoreInputTime;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Time.time > ignoreInputTime)

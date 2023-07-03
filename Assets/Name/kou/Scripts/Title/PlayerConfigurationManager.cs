@@ -9,8 +9,9 @@ public class PlayerConfigurationManager : MonoBehaviour
 {
     private List<PlayerConfiguration> playerConfigs;
 
+    //最大プレイヤー数
     [SerializeField]
-    private int MaxPLayers = 2;
+    private int MaxPlayers = 2;
 
     public static PlayerConfigurationManager Instance { get; private set; }
 
@@ -42,33 +43,36 @@ public class PlayerConfigurationManager : MonoBehaviour
     public void ReadyPlayer(int index)
     {
         playerConfigs[index].IsReady = true;
-        if(playerConfigs.Count == MaxPLayers && playerConfigs.All(p => p.IsReady == true))
+        if(playerConfigs.Count == MaxPlayers && playerConfigs.All(p => p.IsReady == true))
         {
-            ////PlayerタグをつけたGameObjectを配列で取得しリストへ変換
-            //List<GameObject> gameObjects = GameObject.FindGameObjectsWithTag("Player").ToList();
-            ////取得したGameObjectを削除
-            //gameObjects.ForEach(gameObj => Destroy(gameObj));
-
             SceneManager.LoadScene("MainGame");
         }
     }
 
+    //playerConfigsを格納しているリストを空にする
     public void ListEmpty() 
     {
         playerConfigs.RemoveAll(p => p != null);
     }
-
+    //プレイヤーがJoinした時呼び出せる、もしプレイヤーがの数がMaxPlayer以下ならplayerConfigsを作る。
     public void HandlePlayerJoin(PlayerInput pi)
     {
         Debug.Log("Player Joined " + pi.playerIndex);
-        if(!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex) && playerConfigs.Count < MaxPLayers)
+        if(!playerConfigs.Any(p => p.PlayerIndex == pi.playerIndex) && playerConfigs.Count < MaxPlayers)
         {
             pi.transform.SetParent(transform);
             playerConfigs.Add(new PlayerConfiguration(pi));
         }
     }
+
+    //MaxPlayerを返す
+    public int GetMaxPlayer()
+    {
+        return MaxPlayers;
+    }
 }
 
+//playerConfigsクラス
 public class PlayerConfiguration
 {
     public PlayerConfiguration(PlayerInput pi)
