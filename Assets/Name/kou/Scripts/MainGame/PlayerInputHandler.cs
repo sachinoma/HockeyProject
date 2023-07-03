@@ -42,6 +42,18 @@ public class PlayerInputHandler : MonoBehaviour
         {
             OnAttack(context);
         }
+        if(context.action.name == controls.Player.Skill1.name)
+        {
+            OnAttack(context);
+        }
+        if(context.action.name == controls.Player.Skill2.name)
+        {
+            OnAttack(context);
+        }
+        if(context.action.name == controls.Player.Skill3.name)
+        {
+            OnAttack(context);
+        }
     }
 
     //ˆÚ“®’†
