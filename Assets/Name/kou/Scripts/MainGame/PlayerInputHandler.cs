@@ -14,6 +14,11 @@ public class PlayerInputHandler : MonoBehaviour
     private SkinnedMeshRenderer playerMesh;
     private PlayerController controls;
 
+    [SerializeField]
+    private int normalPower;
+    [SerializeField]
+    private int bigPower;
+
     private void Awake()
     {
         mover = GetComponent<Mover>();
@@ -40,19 +45,19 @@ public class PlayerInputHandler : MonoBehaviour
         }
         if (context.action.name == controls.Player.Attack.name)
         {
-            OnAttack(context);
+            OnAttack(context, normalPower);
         }
         if(context.action.name == controls.Player.Skill1.name)
         {
-            OnAttack(context);
+            OnAttack(context, bigPower);
         }
         if(context.action.name == controls.Player.Skill2.name)
         {
-            OnAttack(context);
+            OnAttack(context, bigPower);
         }
         if(context.action.name == controls.Player.Skill3.name)
         {
-            OnAttack(context);
+            OnAttack(context, bigPower);
         }
     }
 
@@ -65,11 +70,11 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
     //Attack’†
-    public void OnAttack(CallbackContext context)
+    public void OnAttack(CallbackContext context, float power)
     {
         if (mover != null)
         {
-            mover.OnAttack(context);
+            mover.OnAttack(context, power);
         }
     }
 }

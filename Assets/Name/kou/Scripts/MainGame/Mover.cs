@@ -61,8 +61,9 @@ public class Mover : MonoBehaviour
     }
 
     //“ü—Í‚ğŠ´’m‚µ‚Ä‚©‚ç‚ÌAttackˆ—
-    public void OnAttack(InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext context, float power)
     {
+        attackTrigger.GetComponent<AttackTrigger>().ChangeForce(power);
         attacked = context.action.triggered;
         animator.SetBool("isAttack", attacked);
     }

@@ -2341,6 +2341,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: edb84b3c-1d42-4c36-9382-e8fffe1970f7
     m_ActionName: Player/Skill[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 0617ee27-cb50-43c4-977b-0455be7d0b26
+    m_ActionName: Player/Skill1[/DualShock4GamepadHID/buttonWest,/XInputControllerWindows/buttonWest]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dc385432-236a-4cb1-8c9c-c67c6b5515e1
+    m_ActionName: Player/Skill2[/DualShock4GamepadHID/buttonNorth,/XInputControllerWindows/buttonNorth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e083a108-0efc-4ed6-8a32-851c67b31730
+    m_ActionName: Player/Skill3[/DualShock4GamepadHID/buttonEast,/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Controller
   m_DefaultActionMap: Player
@@ -2359,6 +2371,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 6055625894730347412}
+  normalPower: 30
+  bigPower: 300
 --- !u!114 &4141402113598304947
 MonoBehaviour:
   m_ObjectHideFlags: 0

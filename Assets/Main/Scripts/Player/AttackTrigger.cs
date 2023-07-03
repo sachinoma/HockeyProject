@@ -25,6 +25,11 @@ public class AttackTrigger : MonoBehaviour
         
     }
 
+    public void ChangeForce(float power)
+    {
+        forceMagnitude = power;
+    }
+
     public void UpdateInputVec(Vector2 vec)
     {
         inputVec = vec;
@@ -32,6 +37,7 @@ public class AttackTrigger : MonoBehaviour
         forceVec.z = -inputVec.y;
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         Rigidbody rigidbody = collision.collider.attachedRigidbody;
@@ -49,6 +55,7 @@ public class AttackTrigger : MonoBehaviour
             Instantiate(hitParticle, hitPos, Quaternion.identity);
         }
     }
+    */
 
     private void OnTriggerEnter(Collider other)
     {
@@ -58,12 +65,20 @@ public class AttackTrigger : MonoBehaviour
             Rigidbody rigidbody = other.attachedRigidbody;
             if (rigidbody != null)
             {
-                //Vector3 forceDirection = other.transform.position - transform.position;
-                Vector3 forceDirection = forceVec;
-                //forceDirection.y = 0f;
-                //forceDirection.Normalize();
+                //入力方向からの3Dベクトル
+                //Vector3 forceDirection = forceVec;
 
-                rigidbody.AddForceAtPosition(forceDirection * forceMagnitude, other.gameObject.transform.position, ForceMode.Impulse);
+                //====================================================================================================
+                //これからホッケーに渡したい値
+                //forceDirectionは力の方向(今はAttackTriggerの前方ベクトル)
+                Vector3 forceDirection = this.transform.forward;
+               
+                //ホッケーに渡す力の大きさ
+                float power = forceMagnitude;
+                //====================================================================================================
+
+                //ホッケーに力を与える（この処理はこれからホッケー内でやった方がいい）
+                rigidbody.AddForceAtPosition(forceDirection * power, other.gameObject.transform.position, ForceMode.Impulse);
 
                 // 衝突位置を取得する
                 Vector3 hitPos = other.ClosestPointOnBounds(this.transform.position);
