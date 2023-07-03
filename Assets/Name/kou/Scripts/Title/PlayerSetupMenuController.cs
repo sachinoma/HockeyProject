@@ -45,6 +45,16 @@ public class PlayerSetupMenuController : MonoBehaviour
         menuPanel.SetActive(false);
     }
 
+    public void SetPrefabNum(int prefabNum)
+    {
+        if(!inputEnabled) { return; }
+
+        PlayerConfigurationManager.Instance.SetPlayerPrefab(PlayerIndex, prefabNum);
+        readyPanel.SetActive(true);
+        readyButton.Select();
+        menuPanel.SetActive(false);
+    }
+
     public void ReadyPlayer()
     {
         if (!inputEnabled) { return; }

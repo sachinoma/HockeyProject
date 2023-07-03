@@ -24,7 +24,10 @@ public class PlayerInputHandler : MonoBehaviour
     public void InitializePlayer(PlayerConfiguration pc)
     {
         playerConfig = pc;
-        playerMesh.material = pc.PlayerMaterial;
+        if(pc.PlayerMaterial != null) 
+        {
+            playerMesh.material = pc.PlayerMaterial;
+        }
         playerConfig.Input.onActionTriggered += Input_onActionTriggered;
     }
 

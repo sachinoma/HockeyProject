@@ -40,6 +40,11 @@ public class PlayerConfigurationManager : MonoBehaviour
         playerConfigs[index].PlayerMaterial = color;
     }
 
+    public void SetPlayerPrefab(int index, int prefabNum)
+    {
+        playerConfigs[index].PlayerPrefabNum = prefabNum;
+    }
+
     public void ReadyPlayer(int index)
     {
         playerConfigs[index].IsReady = true;
@@ -84,4 +89,6 @@ public class PlayerConfiguration
     public int PlayerIndex { get; set; }
     public bool IsReady { get; set; }
     public Material PlayerMaterial { get; set; }
+
+    public int PlayerPrefabNum { get; set; }
 }

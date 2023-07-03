@@ -9,7 +9,7 @@ public class InitializeLevel : MonoBehaviour
     private Transform[] playerSpawns;
     //ÉvÉåÉCÉÑÅ[Prefab
     [SerializeField]
-    private GameObject playerPrefab;
+    private GameObject[] playerPrefab;
 
     [SerializeField]
     private PlayerConfiguration[] playerConfigs;
@@ -21,7 +21,8 @@ public class InitializeLevel : MonoBehaviour
         for(int i = 0; i < playerConfigs.Length; i++)
         {
             Debug.Log(i);
-            var player = Instantiate(playerPrefab, playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
+            int prefabNum = playerConfigs[i].PlayerPrefabNum;
+            var player = Instantiate(playerPrefab[prefabNum], playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
             player.GetComponent<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
         }
     }
