@@ -26,6 +26,6 @@ public class TitleManager : MonoBehaviour
     //Button‚ÌƒCƒxƒ“ƒg‚ÅŒÄ‚Ô
     public void ToCredit()
     {
-        //SceneManager.LoadScene("Credit");
+        SceneManager.LoadScene("Credit");
     }
 }
