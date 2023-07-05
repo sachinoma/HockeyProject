@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -13,6 +14,9 @@ public class HockeyMove : MonoBehaviour
 
     [SerializeField]
     private float LimitSpeed = 10.0f;
+
+    [SerializeField]
+    private GameObject HitEffect;
 
     static string tagWall = "Wall";
 
@@ -37,7 +41,7 @@ public class HockeyMove : MonoBehaviour
         {
             //•Ç”½ŽËSE‚Æ‚©
             Debug.Log("”½ŽË");
-            
+            Instantiate(HitEffect,transform.position,transform.rotation);
         }
     }
 

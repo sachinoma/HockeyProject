@@ -182,6 +182,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   LimitSpeed: 10
+  HitEffect: {fileID: 2944396702758532163, guid: e190bf97c041e58448af6b043116cba0,
+    type: 3}
 --- !u!1 &5326424867898850562
 GameObject:
   m_ObjectHideFlags: 0
