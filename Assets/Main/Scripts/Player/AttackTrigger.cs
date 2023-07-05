@@ -78,7 +78,8 @@ public class AttackTrigger : MonoBehaviour
                 //====================================================================================================
 
                 //ホッケーに力を与える（この処理はこれからホッケー内でやった方がいい）
-                rigidbody.AddForceAtPosition(forceDirection * power, other.gameObject.transform.position, ForceMode.Impulse);
+                Debug.Log(other.name);
+                other.transform.parent.GetComponent<HockeyMove>()?.AddForce(forceDirection, power);
 
                 // 衝突位置を取得する
                 Vector3 hitPos = other.ClosestPointOnBounds(this.transform.position);

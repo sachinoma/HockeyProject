@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 8964729554639671277}
   - component: {fileID: 4272007405878984127}
   - component: {fileID: 9012601569316701150}
-  - component: {fileID: 7577451261397937871}
+  - component: {fileID: 8286561501658811337}
   m_Layer: 7
   m_Name: Hockey
   m_TagString: Hockey
@@ -168,7 +168,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.5, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7577451261397937871
+--- !u!114 &8286561501658811337
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,11 +177,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1072512909748566682}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb629745c6f37a46b209dc609194eed, type: 3}
+  m_Script: {fileID: 11500000, guid: 50ce9ee92cb598642aace730743d3575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
-  LimitSpeed: 15
+  LimitSpeed: 10
 --- !u!1 &5326424867898850562
 GameObject:
   m_ObjectHideFlags: 0
