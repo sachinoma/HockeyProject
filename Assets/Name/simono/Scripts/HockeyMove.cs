@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class HockeyManager : MonoBehaviour
+public class HockeyMove : MonoBehaviour
 {
     Rigidbody rb;
 
@@ -12,9 +12,14 @@ public class HockeyManager : MonoBehaviour
     private float speed = 6.0f;
 
     [SerializeField]
-    float LimitSpeed = 10.0f;
+    private float LimitSpeed = 10.0f;
 
     static string tagWall = "Wall";
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private void FixedUpdate()
     {
@@ -31,8 +36,13 @@ public class HockeyManager : MonoBehaviour
         if(tag == tagWall)
         {
             //•Ç”½ŽËSE‚Æ‚©
-            Debug.Log("”½ŽÐ");
+            Debug.Log("”½ŽË");
             
         }
+    }
+
+    public void AddForce(Vector3 direction, float pow)
+    {
+        rb.AddForceAtPosition(direction * pow, transform.position, ForceMode.Impulse);
     }
 }
