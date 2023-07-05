@@ -27,6 +27,8 @@ public class Mover : MonoBehaviour
 
     [SerializeField]
     private GameObject attackTrigger; //UŒ‚”»’èƒgƒŠƒK[
+    [SerializeField]
+    private ParticleSystem attackEffect;
 
 
     private void Awake()
@@ -108,6 +110,7 @@ public class Mover : MonoBehaviour
     public void AttackStart()
     {
         attackTrigger.SetActive(true);
+        attackEffect.Play();
     }
     //AnimationEvent‚ÅŒÄ‚Ô@AttackTrigger‚ğ–³Œø‚É‚·‚é
     public void AttackEnd()
