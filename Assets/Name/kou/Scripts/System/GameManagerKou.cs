@@ -27,6 +27,9 @@ public class GameManagerKou : MonoBehaviour
     [SerializeField]
     private int[] score;
 
+    public bool isGoal = false;
+
+
     //タイマー
     public float CountDownTime = 10.0f;  // カウントダウンタイム
     [SerializeField]
@@ -55,6 +58,17 @@ public class GameManagerKou : MonoBehaviour
             CountDownTime = 0.0F;
             Judge();
         }
+    }
+
+    public void HitEvent()
+    {
+        isGoal = true;
+        Invoke("IsGoalFalse", 0.1f);
+    }
+
+    private void IsGoalFalse()
+    {
+        isGoal = false;
     }
 
     //スコア加算
