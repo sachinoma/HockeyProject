@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.Rendering;
@@ -25,11 +27,34 @@ public class GameManagerKou : MonoBehaviour
     [SerializeField]
     private int[] score;
 
+    //タイマー
+    public float CountDownTime = 10.0f;  // カウントダウンタイム
+    [SerializeField]
+    private Text TextCountDown;
     void Start()
     {
         playerInputManager = gameObject.GetComponent<PlayerInputManager>();
         playerConfigurationManager = GameObject.Find("PlayerConfigurationManager").GetComponent<PlayerConfigurationManager>();
         SpawnHockey();
+    }
+
+    void Update()
+    {
+        Timer();
+    }
+
+    void Timer()
+    {
+        // カウントダウンタイムを整形して表示
+        TextCountDown.text = String.Format("{0:00.0}", CountDownTime);
+        // 経過時刻を引いていく
+        CountDownTime -= Time.deltaTime;
+        // 0.0秒以下になったらカウントダウンタイムを0.0で固定（止まったように見せる）
+        if(CountDownTime <= 0.0F)
+        {
+            CountDownTime = 0.0F;
+            Judge();
+        }
     }
 
     //スコア加算
@@ -43,7 +68,7 @@ public class GameManagerKou : MonoBehaviour
         {
             score[1] += num;
         }       
-        Judge();
+        
     }
 
     //Goalからこのメソッドを呼ぶ
@@ -63,10 +88,10 @@ public class GameManagerKou : MonoBehaviour
     {
         Instantiate(hockey, spawnPos[0].position, Quaternion.identity);
     }
-    //デバッグ用の為にスコアが1以上の場合はシーン遷移
+    
     private void Judge()
     {
-        if (score[0] >= 1 || score[1] >= 1)
+        if(score[0] != score[1])
         {
             DestroyPlayer();
             DeActivePlayerConfiguration();
