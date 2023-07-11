@@ -49,7 +49,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
         if(context.action.name == controls.Player.Skill1.name)
         {
-            OnAttack(context, bigPower);
+            OnSkill(context, 0);
         }
         if(context.action.name == controls.Player.Skill2.name)
         {
@@ -76,5 +76,10 @@ public class PlayerInputHandler : MonoBehaviour
         {
             mover.OnAttack(context, power);
         }
+    }
+
+    private void OnSkill(CallbackContext context, int num)
+    {
+        mover.OnSkill(context, num);
     }
 }

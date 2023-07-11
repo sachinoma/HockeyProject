@@ -18,10 +18,18 @@ public class GoalKou : MonoBehaviour
     {
         if (collision.gameObject.tag == "Hockey")
         {
+            
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Hockey")
+        {
             gameManager.HitEvent();
             gameManager.ScorePlus(isLeft, 1);//スコアを1加算
             gameManager.TriggerSpawnHockey();//ホッケー再生成
-            Destroy(collision.gameObject);//今衝突しているホッケーをdestroy
+            Destroy(other.gameObject.transform.parent.gameObject);//今衝突しているホッケーをdestroy
         }
     }
 }
