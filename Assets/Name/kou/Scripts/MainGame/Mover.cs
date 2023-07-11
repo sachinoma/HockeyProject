@@ -9,6 +9,7 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private Animator animator;
     private CharacterController controller;
+    private Player player;
     
     private bool groundedPlayer; //ê⁄ínÉtÉâÉO
     [SerializeField]
@@ -57,6 +58,18 @@ public class Mover : MonoBehaviour
         }
     }
 
+    public void SetPlayerType(int num)
+    {
+        if(num == 0)
+        {
+            player = new PlayerType0();
+        }
+        else if(num == 1)
+        {
+            player = new PlayerType1();
+        }
+    }
+
     public void SetInputVector(Vector2 direction)
     {
         inputVector = direction;
@@ -94,10 +107,11 @@ public class Mover : MonoBehaviour
             animator.SetBool("isAttack", true);
             Invoke("SetIsAttackFalse", 0.3f);
 
+            //player.SetSkill1(attackTrigger, fireBall);
+            //player.Skill1();
             Vector3 forceDirection = attackTrigger.transform.forward;
-            GameObject ball =  Instantiate(fireBall, transform.position, transform.rotation);          
+            GameObject ball = Instantiate(fireBall, transform.position, transform.rotation);
             ball.GetComponent<FireBall>().moveVec = forceDirection;
-            Debug.Log("Skill");
             ResetTime(num);
         }
     }

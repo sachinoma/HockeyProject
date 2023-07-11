@@ -27,7 +27,8 @@ public class InitializeLevel : MonoBehaviour
             int prefabNum = playerConfigs[i].PlayerPrefabNum;
             var player = Instantiate(playerPrefab[prefabNum], playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
             player.GetComponent<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
-            player.GetComponent<Mover>().SetPlayerUI(playerUI[playerConfigs[i].PlayerIndex]);
+            player.GetComponent<Mover>().SetPlayerType(playerConfigs[i].PlayerIndex);
+            player.GetComponent<Mover>().SetPlayerUI(playerUI[playerConfigs[i].PlayerIndex]);           
         }
     }
 

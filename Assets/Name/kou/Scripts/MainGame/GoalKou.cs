@@ -13,14 +13,6 @@ public class GoalKou : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerKou>();
     }
-  
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Hockey")
-        {
-            
-        }
-    }
 
     private void OnTriggerEnter(Collider other)
     {
