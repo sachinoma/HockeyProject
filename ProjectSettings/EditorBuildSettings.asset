@@ -6,23 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Name/kou/Scene/PlayerSetup.unity
-    guid: 6fdd140b83bd31745a71ff5cdba870ed
-  - enabled: 0
-    path: Assets/Name/kou/Scene/MainGame.unity
-    guid: 7cf5a11c9040fd34ead152ac0cbb08f7
-  - enabled: 1
-    path: Assets/Name/kou/Scene/Result.unity
-    guid: 2e86f9fff5fbc70458866be61e65a42e
-  - enabled: 1
     path: Assets/Name/kou/Scene/Title.unity
     guid: c2d38d0fe19ca1c44a8c24bebcae99f4
   - enabled: 1
     path: Assets/Name/simono/Scene/Credit.unity
     guid: 350ee10f53a13b14e80640b666cbeca5
   - enabled: 1
-    path: Assets/Name/siozaki/Scene/MainGame.unity
-    guid: 092f20f9f2d7c3a4eb5de9d647b5c851
+    path: Assets/Name/kou/Scene/PlayerSetup.unity
+    guid: 6fdd140b83bd31745a71ff5cdba870ed
+  - enabled: 1
+    path: Assets/Name/kou/Scene/MainGame.unity
+    guid: 7cf5a11c9040fd34ead152ac0cbb08f7
+  - enabled: 1
+    path: Assets/Name/kou/Scene/Result.unity
+    guid: 2e86f9fff5fbc70458866be61e65a42e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5bcf6d51ea83a464e8d2e2f95b40fefe,
       type: 2}
