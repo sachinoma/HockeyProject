@@ -22,11 +22,20 @@ public class ResultManager : MonoBehaviour
     [SerializeField]
     GameObject menuItem;
 
+    [SerializeField]
+    GameObject menuMain;
+
     void Start()
     {
         playerConfigurationManager = GameObject.Find("PlayerConfigurationManager").GetComponent<PlayerConfigurationManager>();
         parent = playerConfigurationManager.transform.gameObject;
         foreach(MultiplayerEventSystem eventSystem in FindObjectsOfType<MultiplayerEventSystem>()) { eventSystem.SetSelectedGameObject(menuItem); }
+        Invoke(nameof(MenuActive), 3.5f);
+    }
+
+    private void MenuActive()
+    {
+        menuMain.SetActive(true);
     }
 
     //Äíˆ—
