@@ -31,7 +31,7 @@ public class FireBall : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         AddForce();
-        Invoke("Destroy", lifeTime);
+        Invoke(nameof(Destroy), lifeTime);
     }
 
     private void FixedUpdate()

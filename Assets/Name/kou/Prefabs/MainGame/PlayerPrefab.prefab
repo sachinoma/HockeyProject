@@ -5073,7 +5073,7 @@ MonoBehaviour:
   - 3
   skillTimeNow:
   - 0
-  fireBall: {fileID: 7085943270958454668, guid: 6ca9e9166e3a9d74985f21942bbf8d89,
+  skill1Obj: {fileID: 7085943270958454668, guid: 6ca9e9166e3a9d74985f21942bbf8d89,
     type: 3}
 --- !u!143 &9026839922027715884
 CharacterController:
