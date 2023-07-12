@@ -7126,7 +7126,7 @@ MonoBehaviour:
   resetTime: 1.5
   score: 0000000000000000
   isGoal: 0
-  CountDownTime: 60
+  CountDownTime: 10
   TextCountDown: {fileID: 1707459324}
 --- !u!1001 &1878903443
 PrefabInstance:
