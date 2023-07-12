@@ -7,6 +7,9 @@ public class Wall : MonoBehaviour
     [SerializeField] private Vector3 localGravity;
     private Rigidbody rBody;
 
+    [SerializeField] private GameObject LandEffect;
+    private GameObject createObject;
+
     // Use this for initialization
     private void Start()
     {
@@ -27,6 +30,15 @@ public class Wall : MonoBehaviour
 
     private void Destroy()
     {
+        Destroy(createObject);
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            createObject = Instantiate(LandEffect, transform.position, transform.rotation);
+        }
     }
 }
