@@ -23,5 +23,5 @@ public class CharacterSwitcher : MonoBehaviour
         index = Random.Range(0, fighters.Count);
         manager.playerPrefab = fighters[index];
     }
-    
+
 }
