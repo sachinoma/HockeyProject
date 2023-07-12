@@ -9,6 +9,7 @@ TagManager:
   - Attack
   - PlayerConfiguration
   - Bullet
+  - Ground
   layers:
   - Default
   - TransparentFX
