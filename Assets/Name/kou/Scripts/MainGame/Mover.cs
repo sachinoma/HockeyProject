@@ -39,7 +39,7 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private float[] skillTimeNow;
     [SerializeField]
-    private GameObject fireBall;
+    private GameObject skill1Obj;
 
 
     private void Awake()
@@ -49,7 +49,7 @@ public class Mover : MonoBehaviour
 
     private void Start()
     {     
-        attackTrigger = transform.Find("AttackTrigger").gameObject;
+        //attackTrigger = transform.Find("AttackTrigger").gameObject;
         attackTrigger.SetActive(false);
 
         for(int i = 0; i < skillTimeNow.Length; ++i)
@@ -102,17 +102,17 @@ public class Mover : MonoBehaviour
     {
         if(skillTimeNow[num] == skillTime[num])
         {
-            attackTrigger.GetComponent<AttackTrigger>().ChangeForce(300);
+            ResetTime(num);
             attacked = context.action.triggered;
             animator.SetBool("isAttack", true);
             Invoke("SetIsAttackFalse", 0.3f);
 
-            //player.SetSkill1(attackTrigger, fireBall);
-            //player.Skill1();
-            Vector3 forceDirection = attackTrigger.transform.forward;
-            GameObject ball = Instantiate(fireBall, transform.position, transform.rotation);
-            ball.GetComponent<FireBall>().moveVec = forceDirection;
-            ResetTime(num);
+            player.SetSkill1(attackTrigger, skill1Obj);
+            player.Skill1(this.transform);
+         
+            //Vector3 forceDirection = attackTrigger.transform.forward;
+            //GameObject ball = Instantiate(fireBall, transform.position, transform.rotation);
+            //ball.GetComponent<FireBall>().moveVec = forceDirection;         
         }
     }
     private void SetIsAttackFalse()
