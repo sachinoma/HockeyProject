@@ -12,4 +12,5 @@ public class PlayerUI : MonoBehaviour
     {
         skillUI[num].fillAmount = fillNum;
     }
+
 }

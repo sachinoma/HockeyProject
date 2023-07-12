@@ -9,7 +9,7 @@ public class PlayerSetupMenuController : MonoBehaviour
     private int PlayerIndex;
 
     [SerializeField]
-    private TextMeshProUGUI titleText;
+    private Text titleText;
     [SerializeField]
     private GameObject readyPanel;
     [SerializeField]
@@ -23,7 +23,7 @@ public class PlayerSetupMenuController : MonoBehaviour
     public  void SetPlayerIndex(int pi)
     {
         PlayerIndex = pi;
-        titleText.SetText("Player " + (pi + 1).ToString());
+        titleText.text = ("Player " + (pi + 1).ToString());
         ignoreInputTime = Time.time + ignoreInputTime;
     }
 
