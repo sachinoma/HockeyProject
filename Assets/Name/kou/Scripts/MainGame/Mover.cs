@@ -9,6 +9,7 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private Animator animator;
     private CharacterController controller;
+    private Player player;
     
     private bool groundedPlayer; //接地フラグ
     [SerializeField]
@@ -30,6 +31,16 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private ParticleSystem attackEffect;
 
+    [SerializeField]
+    private PlayerUI ui;
+
+    [SerializeField]
+    private float[] skillTime;
+    [SerializeField]
+    private float[] skillTimeNow;
+    [SerializeField]
+    private GameObject skill1Obj;
+
 
     private void Awake()
     {
@@ -38,8 +49,25 @@ public class Mover : MonoBehaviour
 
     private void Start()
     {     
-        attackTrigger = transform.Find("AttackTrigger").gameObject;
+        //attackTrigger = transform.Find("AttackTrigger").gameObject;
         attackTrigger.SetActive(false);
+
+        for(int i = 0; i < skillTimeNow.Length; ++i)
+        {
+            skillTimeNow[i] = skillTime[0];
+        }
+    }
+
+    public void SetPlayerType(int num)
+    {
+        if(num == 0)
+        {
+            player = new PlayerType0();
+        }
+        else if(num == 1)
+        {
+            player = new PlayerType1();
+        }
     }
 
     public void SetInputVector(Vector2 direction)
@@ -68,6 +96,33 @@ public class Mover : MonoBehaviour
         attackTrigger.GetComponent<AttackTrigger>().ChangeForce(power);
         attacked = context.action.triggered;
         animator.SetBool("isAttack", attacked);
+    }
+
+    public void OnSkill(InputAction.CallbackContext context, int num)
+    {
+        if(skillTimeNow[num] == skillTime[num])
+        {
+            ResetTime(num);
+            attacked = context.action.triggered;
+            animator.SetBool("isAttack", true);
+            Invoke("SetIsAttackFalse", 0.3f);
+
+            player.SetSkill1(attackTrigger, skill1Obj);
+            player.Skill1(this.transform);
+         
+            //Vector3 forceDirection = attackTrigger.transform.forward;
+            //GameObject ball = Instantiate(fireBall, transform.position, transform.rotation);
+            //ball.GetComponent<FireBall>().moveVec = forceDirection;         
+        }
+    }
+    private void SetIsAttackFalse()
+    {
+        animator.SetBool("isAttack", false);
+    }
+
+    private void ResetTime(int num)
+    {
+        skillTimeNow[num] = 0;
     }
 
     void Update()
@@ -99,6 +154,24 @@ public class Mover : MonoBehaviour
         //移動する
         moveDirection.y += gravityValue * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
+
+        //SkillUI
+        for (int i = 0; i < skillTimeNow.Length; ++i)
+        {
+            if (skillTimeNow[i] != skillTime[i])
+            {
+                if (skillTimeNow[i] < skillTime[i])
+                {
+                    skillTimeNow[i] += Time.deltaTime;
+                }
+
+                if (skillTimeNow[i] > skillTime[i])
+                {
+                    skillTimeNow[i] = skillTime[i];
+                }
+                ui.UpdateUI(i, skillTimeNow[i] / skillTime[i]);
+            }
+        }
     }
 
     public static float Vector2ToAngle(Vector2 vector)
@@ -116,6 +189,11 @@ public class Mover : MonoBehaviour
     public void AttackEnd()
     {
         attackTrigger.SetActive(false);
+    }
+
+    public void SetPlayerUI(PlayerUI ui)
+    {
+        this.ui = ui;
     }
 
     //プレイヤー自身の衝突判定

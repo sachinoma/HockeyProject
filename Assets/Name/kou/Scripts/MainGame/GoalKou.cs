@@ -13,14 +13,15 @@ public class GoalKou : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManagerKou>();
     }
-  
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Hockey")
+        if(other.gameObject.tag == "Hockey")
         {
+            gameManager.HitEvent();
             gameManager.ScorePlus(isLeft, 1);//スコアを1加算
             gameManager.TriggerSpawnHockey();//ホッケー再生成
-            Destroy(collision.gameObject);//今衝突しているホッケーをdestroy
+            Destroy(other.gameObject.transform.parent.gameObject);//今衝突しているホッケーをdestroy
         }
     }
 }

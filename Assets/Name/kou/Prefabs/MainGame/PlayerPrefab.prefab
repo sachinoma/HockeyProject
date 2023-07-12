@@ -5068,6 +5068,13 @@ MonoBehaviour:
   forceMagnitude: 5
   attackTrigger: {fileID: 3504687304614831906}
   attackEffect: {fileID: 326609650462367272}
+  ui: {fileID: 0}
+  skillTime:
+  - 3
+  skillTimeNow:
+  - 0
+  skill1Obj: {fileID: 7085943270958454668, guid: 6ca9e9166e3a9d74985f21942bbf8d89,
+    type: 3}
 --- !u!143 &9026839922027715884
 CharacterController:
   m_ObjectHideFlags: 0
