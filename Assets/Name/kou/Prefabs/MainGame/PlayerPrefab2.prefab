@@ -2393,6 +2393,13 @@ MonoBehaviour:
   forceMagnitude: 5
   attackTrigger: {fileID: 9203065472637769952}
   attackEffect: {fileID: 309651389404034528}
+  ui: {fileID: 0}
+  skillTime:
+  - 5
+  skillTimeNow:
+  - 0
+  fireBall: {fileID: 7085943270958454668, guid: 6ca9e9166e3a9d74985f21942bbf8d89,
+    type: 3}
 --- !u!143 &8541314761628570324
 CharacterController:
   m_ObjectHideFlags: 0
