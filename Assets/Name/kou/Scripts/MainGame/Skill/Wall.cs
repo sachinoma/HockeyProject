@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
+    AudioSource audioSource;
+    [SerializeField]
+    private AudioClip land;
+
     [SerializeField] private Vector3 localGravity;
     private Rigidbody rBody;
 
@@ -15,6 +19,7 @@ public class Wall : MonoBehaviour
     // Use this for initialization
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         rBody = this.GetComponent<Rigidbody>();
         rBody.useGravity = false; //ç≈èâÇ…rigidBodyÇÃèdóÕÇégÇÌÇ»Ç≠Ç∑ÇÈ
         Invoke(nameof(Destroy), lifeTime);
@@ -40,6 +45,7 @@ public class Wall : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            audioSource.PlayOneShot(land, 1.0f);
             createObject = Instantiate(LandEffect, transform.position, transform.rotation);
         }
     }
