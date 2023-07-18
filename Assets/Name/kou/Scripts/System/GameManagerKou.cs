@@ -74,7 +74,7 @@ public class GameManagerKou : MonoBehaviour
     //スコア加算
     public void ScorePlus(bool isLeft,int num)
     {
-        if (isLeft) 
+        if (!isLeft) 
         {
             score[0] += num;
         }
@@ -105,8 +105,19 @@ public class GameManagerKou : MonoBehaviour
     
     private void Judge()
     {
-        if(score[0] != score[1])
+        int Player1 = 0;
+        int Player2 = 1;
+
+        if (score[0] != score[1])
         {
+            if (score[0] > score[1])
+            {
+                SetWinner(Player1);
+            }
+            else
+            {
+                SetWinner(Player2);
+            }
             DestroyPlayer();
             DeActivePlayerConfiguration();
             Load();
@@ -134,5 +145,10 @@ public class GameManagerKou : MonoBehaviour
         List<GameObject> gameObjects = GameObject.FindGameObjectsWithTag("PlayerConfiguration").ToList();
         //公式のDeactivateInput()を使う
         gameObjects.ForEach(gameObj => gameObj.GetComponent<PlayerInput>().DeactivateInput());
+    }
+
+    public void SetWinner(int winnerNum)
+    {
+        playerConfigurationManager.SetWinner(winnerNum);
     }
 }

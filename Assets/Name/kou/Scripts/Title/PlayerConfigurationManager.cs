@@ -13,6 +13,10 @@ public class PlayerConfigurationManager : MonoBehaviour
     [SerializeField]
     private int MaxPlayers = 2;
 
+    [SerializeField]
+    private int WinnerPlayers;
+    private int WinnerPrefabNum;
+
     public static PlayerConfigurationManager Instance { get; private set; }
 
     private void Awake()
@@ -74,6 +78,22 @@ public class PlayerConfigurationManager : MonoBehaviour
     public int GetMaxPlayer()
     {
         return MaxPlayers;
+    }
+
+    public void SetWinner(int num)
+    {
+        WinnerPlayers = num;
+        WinnerPrefabNum = playerConfigs[num].PlayerPrefabNum;
+    }
+
+    public int GetWinner()
+    {
+        return WinnerPlayers;
+    }
+
+    public int GetWinnerPrefabNum()
+    {
+        return WinnerPrefabNum;
     }
 }
 

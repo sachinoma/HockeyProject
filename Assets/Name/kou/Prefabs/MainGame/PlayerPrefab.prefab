@@ -5047,8 +5047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMesh: {fileID: 8911564255556392028}
-  normalPower: 30
-  bigPower: 300
+  hitPower: 300
 --- !u!114 &4045740030576839270
 MonoBehaviour:
   m_ObjectHideFlags: 0

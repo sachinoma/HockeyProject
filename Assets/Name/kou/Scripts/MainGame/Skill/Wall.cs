@@ -10,12 +10,14 @@ public class Wall : MonoBehaviour
     [SerializeField] private GameObject LandEffect;
     private GameObject createObject;
 
+    [SerializeField] private float lifeTime = 6.0f;
+
     // Use this for initialization
     private void Start()
     {
         rBody = this.GetComponent<Rigidbody>();
         rBody.useGravity = false; //Å‰‚ÉrigidBody‚Ìd—Í‚ğg‚í‚È‚­‚·‚é
-        Invoke(nameof(Destroy), 8.0f);
+        Invoke(nameof(Destroy), lifeTime);
     }
 
     private void FixedUpdate()

@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+
+
 
 public class ResultManager : MonoBehaviour
 {
@@ -17,25 +18,72 @@ public class ResultManager : MonoBehaviour
     GameObject parent;
 
     [SerializeField]
-    PlayerInput[] playerInputs;
-
-    [SerializeField]
     GameObject menuItem;
 
     [SerializeField]
     GameObject menuMain;
 
+    [SerializeField]
+    GameObject[] chara;
+
+    [SerializeField]
+    Animator cameraAnim;
+
+    class Winner
+    {
+        private int winPlayer;
+        private int winnerPrefabNum;
+
+        public void SetWinPlayer(int num)
+        {
+            winPlayer = num;
+        }
+        public int GetWinPlayer()
+        {
+            return winPlayer;
+        }
+        public void SetWinPrefabNum(int num)
+        {
+            winnerPrefabNum = num;
+        }
+        public int GetWinPrefabNum()
+        {
+            return winnerPrefabNum;
+        }
+    }
+    Winner winner;
+
     void Start()
     {
         playerConfigurationManager = GameObject.Find("PlayerConfigurationManager").GetComponent<PlayerConfigurationManager>();
         parent = playerConfigurationManager.transform.gameObject;
-        foreach(MultiplayerEventSystem eventSystem in FindObjectsOfType<MultiplayerEventSystem>()) { eventSystem.SetSelectedGameObject(menuItem); }
+        winner = new Winner();
+        foreach (MultiplayerEventSystem eventSystem in FindObjectsOfType<MultiplayerEventSystem>()) { eventSystem.SetSelectedGameObject(menuItem); }
+        SetPerformance();
         Invoke(nameof(MenuActive), 3.5f);
     }
 
     private void MenuActive()
     {
         menuMain.SetActive(true);
+    }
+
+    private void SetPerformance()
+    {
+        winner.SetWinPlayer(playerConfigurationManager.GetWinner());
+        winner.SetWinPrefabNum(playerConfigurationManager.GetWinnerPrefabNum());
+        SetChara();
+        SetCamera();
+    }
+
+    private void SetChara()
+    {
+        chara[winner.GetWinPrefabNum()].SetActive(true);
+    }
+
+    private void SetCamera()
+    {
+        cameraAnim.SetInteger("cameraWork", winner.GetWinPrefabNum());
     }
 
     //çƒêÌèàóù
