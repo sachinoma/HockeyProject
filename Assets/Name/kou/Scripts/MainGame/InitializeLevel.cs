@@ -17,6 +17,9 @@ public class InitializeLevel : MonoBehaviour
     [SerializeField]
     private PlayerUI[] playerUI;
 
+    [SerializeField]
+    private ChangeImage changeImage;
+
     void Start()
     {
         //playerConfigsを基にプレイヤーを配置
@@ -28,8 +31,10 @@ public class InitializeLevel : MonoBehaviour
             var player = Instantiate(playerPrefab[prefabNum], playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
             player.GetComponent<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
             player.GetComponent<Mover>().SetPlayerType(playerConfigs[i].PlayerPrefabNum);
-            player.GetComponent<Mover>().SetPlayerUI(playerUI[playerConfigs[i].PlayerIndex]);           
+            player.GetComponent<Mover>().SetPlayerUI(playerUI[playerConfigs[i].PlayerIndex]);
+            changeImage.ChangeSpriteNum(i, playerConfigs[i].PlayerPrefabNum);          
         }
+        changeImage.StartChangeImage();
     }
 
 }

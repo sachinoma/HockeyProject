@@ -15,9 +15,7 @@ public class PlayerInputHandler : MonoBehaviour
     private PlayerController controls;
 
     [SerializeField]
-    private int normalPower;
-    [SerializeField]
-    private int bigPower;
+    private int hitPower;
 
     private void Awake()
     {
@@ -45,7 +43,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
         if (context.action.name == controls.Player.Attack.name)
         {
-            OnAttack(context, normalPower);
+            OnAttack(context, hitPower);
         }
         if(context.action.name == controls.Player.Skill1.name)
         {
@@ -53,11 +51,11 @@ public class PlayerInputHandler : MonoBehaviour
         }
         if(context.action.name == controls.Player.Skill2.name)
         {
-            OnAttack(context, bigPower);
+            OnAttack(context, hitPower);
         }
         if(context.action.name == controls.Player.Skill3.name)
         {
-            OnAttack(context, bigPower);
+            OnAttack(context, hitPower);
         }
     }
 

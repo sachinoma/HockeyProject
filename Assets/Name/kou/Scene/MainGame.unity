@@ -6841,6 +6841,7 @@ MonoBehaviour:
   playerUI:
   - {fileID: 3526625557346677258}
   - {fileID: 7228151857079098403}
+  changeImage: {fileID: 5835164453573005578}
 --- !u!1 &1933645668
 GameObject:
   m_ObjectHideFlags: 0
@@ -8541,6 +8542,7 @@ MonoBehaviour:
   sprites:
   - {fileID: 21300000, guid: c5e101698caee1b46a2c1b3701ca3c3a, type: 3}
   - {fileID: 21300000, guid: a0d6d74bc3dec5f45b0c9a4b0c9ebe5f, type: 3}
+  spriteNum: 0000000000000000
 --- !u!224 &6231210525119664837
 RectTransform:
   m_ObjectHideFlags: 0
