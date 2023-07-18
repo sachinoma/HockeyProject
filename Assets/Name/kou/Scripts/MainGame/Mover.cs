@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Mover : MonoBehaviour
 {
     [SerializeField]
-    private Animator animator;
+    private Animator animator;  
     private CharacterController controller;
     private Player player;
     
@@ -48,7 +48,7 @@ public class Mover : MonoBehaviour
     }
 
     private void Start()
-    {     
+    {
         //attackTrigger = transform.Find("AttackTrigger").gameObject;
         attackTrigger.SetActive(false);
 
@@ -109,7 +109,7 @@ public class Mover : MonoBehaviour
 
             player.SetSkill1(attackTrigger, skill1Obj);
             player.Skill1(this.transform);
-         
+
             //Vector3 forceDirection = attackTrigger.transform.forward;
             //GameObject ball = Instantiate(fireBall, transform.position, transform.rotation);
             //ball.GetComponent<FireBall>().moveVec = forceDirection;         

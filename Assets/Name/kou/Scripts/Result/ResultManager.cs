@@ -8,11 +8,14 @@ using UnityEngine.InputSystem.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-
-
 public class ResultManager : MonoBehaviour
 {
     private PlayerConfigurationManager playerConfigurationManager;
+
+    [SerializeField]
+    AudioSource audioSource;
+    [SerializeField]
+    private AudioClip start;
 
     [SerializeField]
     GameObject parent;
@@ -55,12 +58,19 @@ public class ResultManager : MonoBehaviour
 
     void Start()
     {
+        audioSource.PlayOneShot(start, 1.0f);
         playerConfigurationManager = GameObject.Find("PlayerConfigurationManager").GetComponent<PlayerConfigurationManager>();
         parent = playerConfigurationManager.transform.gameObject;
         winner = new Winner();
         foreach (MultiplayerEventSystem eventSystem in FindObjectsOfType<MultiplayerEventSystem>()) { eventSystem.SetSelectedGameObject(menuItem); }
         SetPerformance();
         Invoke(nameof(MenuActive), 3.5f);
+        Invoke(nameof(StartPlaySound), 2.3f);
+    }
+
+    public void StartPlaySound()
+    {
+        audioSource.Play();
     }
 
     private void MenuActive()

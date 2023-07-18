@@ -8,6 +8,9 @@ using UnityEngine;
 public class HockeyMove : MonoBehaviour
 {
     Rigidbody rb;
+    AudioSource audioSource;
+    [SerializeField]
+    private AudioClip impact;
 
     [SerializeField]
     private float speed = 6.0f;
@@ -23,6 +26,7 @@ public class HockeyMove : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void FixedUpdate()
@@ -42,6 +46,7 @@ public class HockeyMove : MonoBehaviour
             //•Ç”½ŽËSE‚Æ‚©
             Debug.Log("”½ŽË");
             Instantiate(HitEffect,transform.position,transform.rotation);
+            audioSource.PlayOneShot(impact, 1.0f);
         }
     }
 

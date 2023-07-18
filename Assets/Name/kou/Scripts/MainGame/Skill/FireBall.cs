@@ -7,6 +7,12 @@ public class FireBall : MonoBehaviour
 {
     Rigidbody rb;
 
+    AudioSource audioSource;
+    [SerializeField]
+    private AudioClip impact;
+    [SerializeField]
+    private AudioClip spawn;
+
     public Vector3 moveVec;
     [SerializeField]
     float fireBallPower = 300;
@@ -29,6 +35,8 @@ public class FireBall : MonoBehaviour
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.PlayOneShot(spawn, 1.0f);
         rb = GetComponent<Rigidbody>();
         AddForce();
         Invoke(nameof(Destroy), lifeTime);
@@ -50,6 +58,7 @@ public class FireBall : MonoBehaviour
         {
             //•Ç”½ŽËSE‚Æ‚©
             Debug.Log("”½ŽË");
+            audioSource.PlayOneShot(impact, 1.0f);
             Instantiate(HitEffect, transform.position, transform.rotation);
         }
     }
