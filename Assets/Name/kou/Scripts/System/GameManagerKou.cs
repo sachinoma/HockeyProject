@@ -12,8 +12,13 @@ using UnityEngine.SceneManagement;
 public class GameManagerKou : MonoBehaviour
 {
     private PlayerConfigurationManager playerConfigurationManager;
-
     private PlayerInputManager playerInputManager;
+    AudioSource audioSource;
+    [SerializeField]
+    private AudioClip spawnHockeySE;
+    [SerializeField]
+    private AudioClip overtimeSE;
+    private bool overtimePlayed = false;
 
     [SerializeField]
     private Transform[] spawnPos;
@@ -44,6 +49,7 @@ public class GameManagerKou : MonoBehaviour
     {
         playerInputManager = gameObject.GetComponent<PlayerInputManager>();
         playerConfigurationManager = GameObject.Find("PlayerConfigurationManager").GetComponent<PlayerConfigurationManager>();
+        audioSource = GetComponent<AudioSource>();
         SpawnHockey();
     }
 
@@ -60,8 +66,7 @@ public class GameManagerKou : MonoBehaviour
         CountDownTime -= Time.deltaTime;
         // 0.0秒以下になったらカウントダウンタイムを0.0で固定（止まったように見せる）
         if(CountDownTime <= 0.0F)
-        {
-            overtimeUI.SetActive(true);
+        {           
             CountDownTime = 0.0F;
             Judge();
         }
@@ -111,6 +116,7 @@ public class GameManagerKou : MonoBehaviour
     //ホッケー生成
     public void SpawnHockey()
     {
+        audioSource.PlayOneShot(spawnHockeySE, 0.6f);
         Instantiate(hockey, spawnPos[0].position, Quaternion.identity);
     }
     
@@ -132,6 +138,15 @@ public class GameManagerKou : MonoBehaviour
             DestroyPlayer();
             DeActivePlayerConfiguration();
             Load();
+        }
+        else
+        {
+            if(!overtimePlayed)
+            {
+                overtimeUI.SetActive(true);
+                audioSource.PlayOneShot(overtimeSE, 1.0f);
+                overtimePlayed = true;
+            }         
         }
     }
 
