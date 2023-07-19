@@ -40,6 +40,8 @@ public class GameManagerKou : MonoBehaviour
     [SerializeField]
     private GameObject overtimeUI;
 
+    private bool isTimeUp = false;
+
     [SerializeField] private GameObject finishUI;
 
 
@@ -88,18 +90,21 @@ public class GameManagerKou : MonoBehaviour
     //スコア加算
     public void ScorePlus(bool isLeft,int num)
     {
-        if (!isLeft) 
+        if (!isTimeUp)
         {
-            score[0] += num;
-        }
-        else
-        {
-            score[1] += num;
-        }       
-        
-        for(int i = 0; i < scoreText.Length; i++)
-        {
-            scoreText[i].text = (score[i]).ToString();
+            if (!isLeft)
+            {
+                score[0] += num;
+            }
+            else
+            {
+                score[1] += num;
+            }
+
+            for (int i = 0; i < scoreText.Length; i++)
+            {
+                scoreText[i].text = (score[i]).ToString();
+            }
         }
     }
 
@@ -118,8 +123,11 @@ public class GameManagerKou : MonoBehaviour
     //ホッケー生成
     public void SpawnHockey()
     {
-        audioSource.PlayOneShot(spawnHockeySE, 0.6f);
-        Instantiate(hockey, spawnPos[0].position, Quaternion.identity);
+        if(!isTimeUp)
+        {
+            audioSource.PlayOneShot(spawnHockeySE, 0.6f);
+            Instantiate(hockey, spawnPos[0].position, Quaternion.identity);
+        }
     }
     
     private void Judge()
@@ -138,6 +146,7 @@ public class GameManagerKou : MonoBehaviour
                 SetWinner(Player2);
             }
             finishUI.SetActive(true);
+            isTimeUp = true;
         }
         else
         {
