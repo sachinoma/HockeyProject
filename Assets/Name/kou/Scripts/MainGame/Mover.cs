@@ -41,6 +41,9 @@ public class Mover : MonoBehaviour
     [SerializeField]
     private GameObject skill1Obj;
 
+    AudioSource audioSource;
+    [SerializeField]
+    private AudioClip kick;
 
     private void Awake()
     {
@@ -51,8 +54,9 @@ public class Mover : MonoBehaviour
     {
         //attackTrigger = transform.Find("AttackTrigger").gameObject;
         attackTrigger.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
 
-        for(int i = 0; i < skillTimeNow.Length; ++i)
+        for (int i = 0; i < skillTimeNow.Length; ++i)
         {
             skillTimeNow[i] = skillTime[0];
         }
@@ -194,6 +198,11 @@ public class Mover : MonoBehaviour
     public void SetPlayerUI(PlayerUI ui)
     {
         this.ui = ui;
+    }
+
+    public void PlayKickSE()
+    {
+        audioSource.PlayOneShot(kick, 1.0f);
     }
 
     //プレイヤー自身の衝突判定
