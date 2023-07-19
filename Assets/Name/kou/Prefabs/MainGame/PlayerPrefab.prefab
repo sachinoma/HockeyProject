@@ -5061,7 +5061,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c01e8ba52840bc94381c75eb80e96e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill1: {fileID: 8300000, guid: 62b338b1787d6ce44aeb41d7dc4825cc, type: 3}
   animator: {fileID: 6015947245463760867}
   playerSpeed: 8
   jumpHeight: 1
@@ -5076,6 +5075,7 @@ MonoBehaviour:
   - 0
   skill1Obj: {fileID: 7085943270958454668, guid: 6ca9e9166e3a9d74985f21942bbf8d89,
     type: 3}
+  kick: {fileID: 8300000, guid: c0725d9f533357b41a5c6b737e5dddf2, type: 3}
 --- !u!143 &9026839922027715884
 CharacterController:
   m_ObjectHideFlags: 0
