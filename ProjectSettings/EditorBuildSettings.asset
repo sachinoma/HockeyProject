@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Name/kou/Scene/Result.unity
     guid: 2e86f9fff5fbc70458866be61e65a42e
+  - enabled: 1
+    path: Assets/Name/kou/Scene/Tutorial.unity
+    guid: 1379b8255fe70cb4f8e96c8f254f6a11
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 5bcf6d51ea83a464e8d2e2f95b40fefe,
       type: 2}
