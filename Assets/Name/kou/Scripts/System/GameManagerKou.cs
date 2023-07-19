@@ -40,6 +40,8 @@ public class GameManagerKou : MonoBehaviour
     [SerializeField]
     private GameObject overtimeUI;
 
+    [SerializeField] private GameObject finishUI;
+
 
     //タイマー
     public float CountDownTime = 10.0f;  // カウントダウンタイム
@@ -135,9 +137,7 @@ public class GameManagerKou : MonoBehaviour
             {
                 SetWinner(Player2);
             }
-            DestroyPlayer();
-            DeActivePlayerConfiguration();
-            Load();
+            finishUI.SetActive(true);
         }
         else
         {
@@ -148,6 +148,14 @@ public class GameManagerKou : MonoBehaviour
                 overtimePlayed = true;
             }         
         }
+    }
+
+    //終了時
+    public void Finish()
+    {
+        DestroyPlayer();
+        DeActivePlayerConfiguration();
+        Load();
     }
 
     //リザルトに移行
