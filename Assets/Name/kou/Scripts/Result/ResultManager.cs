@@ -12,25 +12,20 @@ public class ResultManager : MonoBehaviour
 {
     private PlayerConfigurationManager playerConfigurationManager;
 
-    [SerializeField]
-    AudioSource audioSource;
-    [SerializeField]
-    private AudioClip start;
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip start;
 
-    [SerializeField]
-    GameObject parent;
+    [SerializeField] GameObject parent;
 
-    [SerializeField]
-    GameObject menuItem;
+    [SerializeField] GameObject menuItem;
 
-    [SerializeField]
-    GameObject menuMain;
+    [SerializeField] GameObject menuMain;
 
-    [SerializeField]
-    GameObject[] chara;
+    [SerializeField] GameObject[] chara;
 
-    [SerializeField]
-    Animator cameraAnim;
+    [SerializeField] Animator cameraAnim;
+
+    [SerializeField] Text winText;
 
     class Winner
     {
@@ -83,12 +78,26 @@ public class ResultManager : MonoBehaviour
         winner.SetWinPlayer(playerConfigurationManager.GetWinner());
         winner.SetWinPrefabNum(playerConfigurationManager.GetWinnerPrefabNum());
         SetChara();
+        SetWinText();
         SetCamera();
     }
 
     private void SetChara()
     {
         chara[winner.GetWinPrefabNum()].SetActive(true);
+    }
+
+    private void SetWinText()
+    {
+        int winPlayerNum = winner.GetWinPlayer();
+        if(winPlayerNum == 0) 
+        {
+            winText.text = "1P WIN";
+        }
+        else
+        {
+            winText.text = "2P WIN";
+        }
     }
 
     private void SetCamera()
