@@ -40,6 +40,10 @@ public class GameManagerKou : MonoBehaviour
     [SerializeField]
     private GameObject overtimeUI;
 
+    private bool isTimeUp = false;
+
+    [SerializeField] private GameObject finishUI;
+
 
     //タイマー
     public float CountDownTime = 10.0f;  // カウントダウンタイム
@@ -86,18 +90,21 @@ public class GameManagerKou : MonoBehaviour
     //スコア加算
     public void ScorePlus(bool isLeft,int num)
     {
-        if (!isLeft) 
+        if (!isTimeUp)
         {
-            score[0] += num;
-        }
-        else
-        {
-            score[1] += num;
-        }       
-        
-        for(int i = 0; i < scoreText.Length; i++)
-        {
-            scoreText[i].text = (score[i]).ToString();
+            if (!isLeft)
+            {
+                score[0] += num;
+            }
+            else
+            {
+                score[1] += num;
+            }
+
+            for (int i = 0; i < scoreText.Length; i++)
+            {
+                scoreText[i].text = (score[i]).ToString();
+            }
         }
     }
 
@@ -116,8 +123,11 @@ public class GameManagerKou : MonoBehaviour
     //ホッケー生成
     public void SpawnHockey()
     {
-        audioSource.PlayOneShot(spawnHockeySE, 0.6f);
-        Instantiate(hockey, spawnPos[0].position, Quaternion.identity);
+        if(!isTimeUp)
+        {
+            audioSource.PlayOneShot(spawnHockeySE, 0.6f);
+            Instantiate(hockey, spawnPos[0].position, Quaternion.identity);
+        }
     }
     
     private void Judge()
@@ -135,9 +145,8 @@ public class GameManagerKou : MonoBehaviour
             {
                 SetWinner(Player2);
             }
-            DestroyPlayer();
-            DeActivePlayerConfiguration();
-            Load();
+            finishUI.SetActive(true);
+            isTimeUp = true;
         }
         else
         {
@@ -148,6 +157,14 @@ public class GameManagerKou : MonoBehaviour
                 overtimePlayed = true;
             }         
         }
+    }
+
+    //終了時
+    public void Finish()
+    {
+        DestroyPlayer();
+        DeActivePlayerConfiguration();
+        Load();
     }
 
     //リザルトに移行
