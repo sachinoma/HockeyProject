@@ -4446,6 +4446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: 8300000, guid: 6a5cc654378ad9049aaa8dd0a040eacf, type: 3}
   isLeft: 0
+  goalFX: {fileID: 1247311384876784, guid: 594886925ae9fe44682cb6cc8faa75da, type: 3}
 --- !u!82 &1290633478
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7593,6 +7594,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goal: {fileID: 8300000, guid: 6a5cc654378ad9049aaa8dd0a040eacf, type: 3}
   isLeft: 1
+  goalFX: {fileID: 1247311384876784, guid: 594886925ae9fe44682cb6cc8faa75da, type: 3}
 --- !u!82 &2012432704
 AudioSource:
   m_ObjectHideFlags: 0
