@@ -29,6 +29,12 @@ public class GameManagerKou : MonoBehaviour
 
     public bool isGoal = false;
 
+    [SerializeField]
+    private Text[] scoreText;
+
+    [SerializeField]
+    private GameObject overtimeUI;
+
 
     //タイマー
     public float CountDownTime = 10.0f;  // カウントダウンタイム
@@ -55,6 +61,7 @@ public class GameManagerKou : MonoBehaviour
         // 0.0秒以下になったらカウントダウンタイムを0.0で固定（止まったように見せる）
         if(CountDownTime <= 0.0F)
         {
+            overtimeUI.SetActive(true);
             CountDownTime = 0.0F;
             Judge();
         }
@@ -83,6 +90,10 @@ public class GameManagerKou : MonoBehaviour
             score[1] += num;
         }       
         
+        for(int i = 0; i < scoreText.Length; i++)
+        {
+            scoreText[i].text = (score[i]).ToString();
+        }
     }
 
     //Goalからこのメソッドを呼ぶ

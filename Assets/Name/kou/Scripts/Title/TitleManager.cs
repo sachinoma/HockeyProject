@@ -28,4 +28,9 @@ public class TitleManager : MonoBehaviour
     {
         SceneManager.LoadScene("Credit");
     }
+
+    public void ToTutorial()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
 }
