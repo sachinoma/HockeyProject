@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Name/kou/Scene/MainGame.unity
     guid: 7cf5a11c9040fd34ead152ac0cbb08f7
-  - enabled: 0
+  - enabled: 1
     path: Assets/Name/kou/Scene/Result.unity
     guid: 2e86f9fff5fbc70458866be61e65a42e
   - enabled: 1
