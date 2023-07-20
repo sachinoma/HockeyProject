@@ -26,6 +26,8 @@ public class GameManagerKou : MonoBehaviour
     [SerializeField]
     private GameObject hockey;
 
+    private bool isSpawn = false;
+
     [SerializeField]
     float resetTime;
 
@@ -44,22 +46,33 @@ public class GameManagerKou : MonoBehaviour
 
     [SerializeField] private GameObject finishUI;
 
-
     //タイマー
     public float CountDownTime = 10.0f;  // カウントダウンタイム
     [SerializeField]
     private Text TextCountDown;
+
+    [SerializeField]
+    private bool isStartCountDown = true;
+
+
     void Start()
     {
         playerInputManager = gameObject.GetComponent<PlayerInputManager>();
         playerConfigurationManager = GameObject.Find("PlayerConfigurationManager").GetComponent<PlayerConfigurationManager>();
-        audioSource = GetComponent<AudioSource>();
-        SpawnHockey();
+        audioSource = GetComponent<AudioSource>();       
     }
 
     void Update()
     {
-        Timer();
+        if(GetIsStartCountDown() == false)
+        {
+            if(!isSpawn)
+            {
+                SpawnHockey();
+                isSpawn = true;
+            }
+            Timer();
+        }
     }
 
     void Timer()
@@ -74,6 +87,16 @@ public class GameManagerKou : MonoBehaviour
             CountDownTime = 0.0F;
             Judge();
         }
+    }
+
+    public void SetIsStartCountDown(bool flag)
+    {
+        isStartCountDown = flag;
+    }
+
+    public bool GetIsStartCountDown()
+    {
+         return isStartCountDown;
     }
 
     public void HitEvent()

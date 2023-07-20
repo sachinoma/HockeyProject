@@ -9,6 +9,7 @@ public class PlayerInputHandler : MonoBehaviour
 {
     private PlayerConfiguration playerConfig;
     private Mover mover;
+    private GameManagerKou gameManager;
 
     [SerializeField]
     private SkinnedMeshRenderer playerMesh;
@@ -21,6 +22,11 @@ public class PlayerInputHandler : MonoBehaviour
     {
         mover = GetComponent<Mover>();
         controls = new PlayerController();
+    }
+
+    private void Start()
+    {
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManagerKou>();
     }
 
     //PlayerConfigs‚©‚ç–á‚Á‚½İ’è‚Åplayer‚ğİ’è‚·‚é
@@ -37,6 +43,8 @@ public class PlayerInputHandler : MonoBehaviour
     //InputƒCƒxƒ“ƒg
     private void Input_onActionTriggered(CallbackContext context)
     {
+        if(gameManager.GetIsStartCountDown() == true) { return; }
+
         if(context.action.name == controls.Player.Movement.name)
         {
             OnMove(context);
