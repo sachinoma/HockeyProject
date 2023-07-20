@@ -9,6 +9,8 @@ public class PlayerConfigurationManager : MonoBehaviour
 {
     private List<PlayerConfiguration> playerConfigs;
 
+    [SerializeField] private GameObject bgmPlayer;
+
     //最大プレイヤー数
     [SerializeField]
     private int MaxPlayers = 2;
@@ -21,6 +23,7 @@ public class PlayerConfigurationManager : MonoBehaviour
 
     private void Awake()
     {
+        bgmPlayer = GameObject.Find("BGM");
         if(Instance != null)
         {
             Debug.Log("trying to creat another singleton!");
@@ -54,8 +57,18 @@ public class PlayerConfigurationManager : MonoBehaviour
         playerConfigs[index].IsReady = true;
         if(playerConfigs.Count == MaxPlayers && playerConfigs.All(p => p.IsReady == true))
         {
-            SceneManager.LoadScene("MainGame");
+            GameStart();
         }
+    }
+
+    private void GameStart()
+    {
+        Destroy(bgmPlayer);
+        LoadScene();
+    }
+    private void LoadScene()
+    {
+        SceneManager.LoadScene("MainGame");
     }
 
     //playerConfigsを格納しているリストを空にする
