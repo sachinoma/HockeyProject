@@ -36,6 +36,7 @@ public class HockeyMove : MonoBehaviour
         {
             rb.velocity = rb.velocity.normalized * LimitSpeed;
         }
+
     }
 
     void OnCollisionEnter(Collision collision)
