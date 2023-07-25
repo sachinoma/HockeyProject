@@ -5076,6 +5076,12 @@ MonoBehaviour:
   skill1Obj: {fileID: 7085943270958454668, guid: 6ca9e9166e3a9d74985f21942bbf8d89,
     type: 3}
   kick: {fileID: 8300000, guid: c0725d9f533357b41a5c6b737e5dddf2, type: 3}
+  attackvoice:
+  - {fileID: 8300000, guid: 70fb7926d36520240a86a7bff0e09557, type: 3}
+  - {fileID: 8300000, guid: c2d29908fe00e6340b20667503204aad, type: 3}
+  - {fileID: 8300000, guid: 99afc067dfbcf3f4ea0e56889203c771, type: 3}
+  - {fileID: 8300000, guid: 2a649a3b2c5be19469a2aa6815bc7fa8, type: 3}
+  - {fileID: 8300000, guid: 342313ffe4aa2104eb1aec2275dbfccd, type: 3}
 --- !u!143 &9026839922027715884
 CharacterController:
   m_ObjectHideFlags: 0
