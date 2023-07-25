@@ -44,6 +44,9 @@ public class Mover : MonoBehaviour
     AudioSource audioSource;
     [SerializeField]
     private AudioClip kick;
+    [SerializeField]
+    private AudioClip[] attackvoice;
+
 
     private void Awake()
     {
@@ -94,12 +97,17 @@ public class Mover : MonoBehaviour
         animator.SetBool("isRun", true);
     }
 
+
+
     //入力を感知してからのAttack処理
     public void OnAttack(InputAction.CallbackContext context, float power)
     {
         attackTrigger.GetComponent<AttackTrigger>().ChangeForce(power);
         attacked = context.action.triggered;
         animator.SetBool("isAttack", attacked);
+
+
+
     }
 
     public void OnSkill(InputAction.CallbackContext context, int num)
@@ -203,6 +211,12 @@ public class Mover : MonoBehaviour
     public void PlayKickSE()
     {
         audioSource.PlayOneShot(kick, 1.0f);
+    }
+
+    public void PlayCharaKickVoice()
+    {
+        int RandomIndex = Random.Range(0, attackvoice.Length);
+        audioSource.PlayOneShot(attackvoice[RandomIndex]);
     }
 
     //プレイヤー自身の衝突判定
