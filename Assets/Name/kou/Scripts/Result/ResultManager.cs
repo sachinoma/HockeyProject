@@ -15,6 +15,10 @@ public class ResultManager : MonoBehaviour
     [SerializeField] AudioSource audioSource;
     [SerializeField] AudioClip start;
 
+    [SerializeField] AudioSource voiceAudioSource;
+    [SerializeField] AudioClip[] chara1Voice;
+    [SerializeField] AudioClip[] chara2Voice;
+
     [SerializeField] GameObject parent;
 
     [SerializeField] GameObject menuItem;
@@ -80,6 +84,7 @@ public class ResultManager : MonoBehaviour
         SetChara();
         SetWinText();
         SetCamera();
+        Invoke(nameof(SetVoice), 0.5f);
     }
 
     private void SetChara()
@@ -97,6 +102,18 @@ public class ResultManager : MonoBehaviour
         else
         {
             winText.text = "2P WIN";
+        }
+    }
+
+    private void SetVoice()
+    {
+        if(winner.GetWinPrefabNum() == 0)
+        {
+            voiceAudioSource.PlayOneShot(chara1Voice[Random.Range(0, chara1Voice.Length)], 1.0f);
+        }
+        else
+        {
+            voiceAudioSource.PlayOneShot(chara2Voice[Random.Range(0, chara2Voice.Length)], 1.0f);
         }
     }
 
