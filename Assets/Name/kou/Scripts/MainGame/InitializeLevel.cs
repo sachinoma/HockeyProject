@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class InitializeLevel : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class InitializeLevel : MonoBehaviour
     [SerializeField]
     private ChangeImage changeImage;
 
+    [SerializeField]
+    private UIController_Overlay[] uiController;
+
     void Start()
     {
         //playerConfigsを基にプレイヤーを配置
@@ -29,6 +33,8 @@ public class InitializeLevel : MonoBehaviour
             Debug.Log(i);
             int prefabNum = playerConfigs[i].PlayerPrefabNum;
             var player = Instantiate(playerPrefab[prefabNum], playerSpawns[i].position, playerSpawns[i].rotation, gameObject.transform);
+            uiController[i].targetTfm = player.transform;
+
             player.GetComponent<PlayerInputHandler>().InitializePlayer(playerConfigs[i]);
             player.GetComponent<Mover>().SetPlayerType(playerConfigs[i].PlayerPrefabNum);
             player.GetComponent<Mover>().SetPlayerUI(playerUI[playerConfigs[i].PlayerIndex]);

@@ -58,14 +58,14 @@ namespace UnityChan
 			}
 		}
 
-		void OnGUI ()
-		{
-            if (isGUI)
-            {
-                Rect rect1 = new Rect(10, Screen.height - 40, 400, 30);
-                isWindActive = GUI.Toggle(rect1, isWindActive, "Random Wind");
-            }
-		}
+		//void OnGUI ()
+		//{
+  //          if (isGUI)
+  //          {
+  //              Rect rect1 = new Rect(10, Screen.height - 40, 400, 30);
+  //              isWindActive = GUI.Toggle(rect1, isWindActive, "Random Wind");
+  //          }
+		//}
 
 		// ランダム判定用関数.
 		IEnumerator RandomChange ()
