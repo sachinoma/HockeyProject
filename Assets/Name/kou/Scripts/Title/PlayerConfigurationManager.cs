@@ -19,6 +19,9 @@ public class PlayerConfigurationManager : MonoBehaviour
     private int WinnerPlayers;
     private int WinnerPrefabNum;
 
+    [SerializeField]
+    private GameObject PressAUi;
+
     public static PlayerConfigurationManager Instance { get; private set; }
 
     private void Awake()
@@ -84,6 +87,7 @@ public class PlayerConfigurationManager : MonoBehaviour
         {
             pi.transform.SetParent(transform);
             playerConfigs.Add(new PlayerConfiguration(pi));
+            PressAUi.SetActive(false);
         }
     }
 
